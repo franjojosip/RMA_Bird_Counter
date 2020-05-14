@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="match_parent"
+        android:layout_height="90dp"
+        android:fontFamily="casual"
+        android:gravity="center"
+        android:text="@string/bird_counter"
+        android:textColor="#A3A0A0"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvCounter"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_below="@+id/tvTitle"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:background="@color/gray"
+        android:fontFamily="casual"
+        android:gravity="center"
+        android:text="@string/counter"
+        android:textColor="#FFFFFF"
+        android:textSize="30sp"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/btnRed"
+        android:layout_width="140dp"
+        android:layout_height="50dp"
+        android:layout_below="@+id/tvCounter"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="20dp"
+        android:background="@color/red"
+        android:text="@string/red"
+        android:textColor="#FFFFFF" />
+
+    <Button
+        android:id="@+id/btnYellow"
+        android:layout_width="140dp"
+        android:layout_height="50dp"
+        android:layout_below="@+id/tvCounter"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="40dp"
+        android:background="@color/yellow"
+        android:text="@string/yellow"
+        android:textColor="#FFFFFF" />
+
+    <Button
+        android:id="@+id/btnGreen"
+        android:layout_width="140dp"
+        android:layout_height="50dp"
+        android:layout_below="@+id/btnRed"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="42dp"
+        android:layout_marginTop="20dp"
+        android:background="@color/green"
+        android:text="@string/green"
+        android:textColor="#FFFFFF" />
+
+    <Button
+        android:id="@+id/btnBlue"
+        android:layout_width="140dp"
+        android:layout_height="50dp"
+        android:layout_below="@+id/btnYellow"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="40dp"
+        android:background="@color/blue"
+        android:text="@string/blue"
+        android:textColor="#FFFFFF" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_below="@id/btnGreen"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btnResetColor"
+            android:layout_width="140dp"
+            android:layout_height="50dp"
+            android:layout_marginEnd="15dp"
+            android:background="#D6D3D3"
+            android:text="@string/reset_color" />
+
+        <Button
+            android:id="@+id/btnResetCount"
+            android:layout_width="140dp"
+            android:layout_height="50dp"
+            android:background="#D6D3D3"
+            android:text="@string/reset_count" />
+    </LinearLayout>
+
+</RelativeLayout>
