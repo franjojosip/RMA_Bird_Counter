@@ -1,1 +1,1 @@
-# RMA_Bird_Counter
+# Bird Counter Kotlin application
