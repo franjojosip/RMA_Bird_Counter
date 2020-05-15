@@ -17,8 +17,6 @@ class MainActivity : AppCompatActivity() {
     private lateinit var btnYellowBird: Button
     private lateinit var btnResetColor: Button
     private lateinit var btnResetCount: Button
-    private lateinit var sharedPreferences: SharedPreferences
-    private val sharedPreferencesFile = "birdCounter"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,7 +33,7 @@ class MainActivity : AppCompatActivity() {
         this.btnResetColor = findViewById(R.id.btnResetColor)
         this.btnResetCount = findViewById(R.id.btnResetCount)
         setButtonListener()
-        setSharedPreferences()
+        setTvCounter(PreferenceManager().retrieveCount(), PreferenceManager().retrieveColor())
     }
 
     private fun setButtonListener() {
@@ -61,34 +59,25 @@ class MainActivity : AppCompatActivity() {
 
     private fun resetColor() {
         val colorId: Int = R.color.gray
-        this.sharedPreferences.edit().putInt("birdColor", colorId).apply()
+        PreferenceManager().saveColor(colorId)
         this.tvCounter.setBackgroundColor(ContextCompat.getColor(applicationContext, colorId))
-    }
-
-    private fun setSharedPreferences() {
-        this.sharedPreferences = this.getSharedPreferences(sharedPreferencesFile, Context.MODE_PRIVATE)
-        val count: Int = this.sharedPreferences.getInt("birdCount", 0)
-        val colorId: Int = this.sharedPreferences.getInt("birdColor", R.color.gray)
-        this.sharedPreferences.edit().putInt("birdCount", count).apply()
-        this.sharedPreferences.edit().putInt("birdColor", colorId).apply()
-        setTvCounter(count, colorId)
     }
 
     private fun setTvCounter(count: Int, colorId: Int) {
         this.tvCounter.text = count.toString()
-        this.tvCounter.setBackgroundColor(ContextCompat.getColor(baseContext, colorId))
+        this.tvCounter.setBackgroundColor(ContextCompat.getColor(applicationContext, colorId))
     }
 
     private fun addBird(colorId: Int) {
-        val count: Int = (this.sharedPreferences.getInt("birdCount", 0)) + 1;
+        val count: Int = PreferenceManager().retrieveCount() + 1;
         this.tvCounter.text = count.toString()
         this.tvCounter.setBackgroundColor(ContextCompat.getColor(applicationContext, colorId))
-        this.sharedPreferences.edit().putInt("birdCount", count).apply()
-        this.sharedPreferences.edit().putInt("birdColor", colorId).apply()
+        PreferenceManager().saveCount(count)
+        PreferenceManager().saveColor(colorId)
     }
 
     private fun resetCount(){
         this.tvCounter.text = "0";
-        this.sharedPreferences.edit().putInt("birdCount", 0).apply()
+        PreferenceManager().saveCount(0)
     }
 }

@@ -3,6 +3,7 @@
     package="ht.ferit.fjjukic.rma_lv3">
 
     <application
+        android:name=".BirdCounterApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
