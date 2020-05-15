@@ -1,7 +1,6 @@
 package ht.ferit.fjjukic.rma_lv3
 
 import android.content.Context
-import ht.ferit.fjjukic.rma_lv3.BirdCounterApplication.Companion.ApplicationContext
 
 class PreferenceManager {
     companion object {
@@ -20,14 +19,14 @@ class PreferenceManager {
     }
 
     fun retrieveColor(): Int {
-        val sharedPreferences = ApplicationContext.getSharedPreferences(
+        val sharedPreferences = BirdCounterApplication.ApplicationContext.getSharedPreferences(
             PREFS_FILE, Context.MODE_PRIVATE
         )
         return sharedPreferences.getInt(PREFS_KEY_COLOR, R.color.gray)
     }
 
     fun saveCount(count: Int) {
-        val sharedPreferences = ApplicationContext.getSharedPreferences(
+        val sharedPreferences = BirdCounterApplication.ApplicationContext.getSharedPreferences(
             PREFS_FILE, Context.MODE_PRIVATE
         )
         val editor = sharedPreferences.edit()
@@ -36,7 +35,7 @@ class PreferenceManager {
     }
 
     fun retrieveCount(): Int {
-        val sharedPreferences = ApplicationContext.getSharedPreferences(
+        val sharedPreferences = BirdCounterApplication.ApplicationContext.getSharedPreferences(
             PREFS_FILE, Context.MODE_PRIVATE
         )
         return sharedPreferences.getInt(PREFS_KEY_COUNT, 0)
