@@ -8,37 +8,28 @@ class PreferenceManager {
         const val PREFS_KEY_COLOR = "birdColor"
         const val PREFS_KEY_COUNT = "birdCount"
     }
+    private val sharedPreferences = BirdCounterApplication.ApplicationContext.getSharedPreferences(
+        PREFS_FILE, Context.MODE_PRIVATE
+    )
 
     fun saveColor(colorId: Int) {
-        val sharedPreferences = BirdCounterApplication.ApplicationContext.getSharedPreferences(
-            PREFS_FILE, Context.MODE_PRIVATE
-        )
-        val editor = sharedPreferences.edit()
+        val editor = this.sharedPreferences.edit()
         editor.putInt(PREFS_KEY_COLOR, colorId)
         editor.apply()
     }
 
     fun retrieveColor(): Int {
-        val sharedPreferences = BirdCounterApplication.ApplicationContext.getSharedPreferences(
-            PREFS_FILE, Context.MODE_PRIVATE
-        )
-        return sharedPreferences.getInt(PREFS_KEY_COLOR, R.color.gray)
+        return this.sharedPreferences.getInt(PREFS_KEY_COLOR, R.color.gray)
     }
 
     fun saveCount(count: Int) {
-        val sharedPreferences = BirdCounterApplication.ApplicationContext.getSharedPreferences(
-            PREFS_FILE, Context.MODE_PRIVATE
-        )
-        val editor = sharedPreferences.edit()
+        val editor = this.sharedPreferences.edit()
         editor.putInt(PREFS_KEY_COUNT, count)
         editor.apply()
     }
 
     fun retrieveCount(): Int {
-        val sharedPreferences = BirdCounterApplication.ApplicationContext.getSharedPreferences(
-            PREFS_FILE, Context.MODE_PRIVATE
-        )
-        return sharedPreferences.getInt(PREFS_KEY_COUNT, 0)
+        return this.sharedPreferences.getInt(PREFS_KEY_COUNT, 0)
     }
-
 }
+
