@@ -1,11 +1,8 @@
 package ht.ferit.fjjukic.rma_lv3
 
-import android.content.Context
-import android.content.SharedPreferences
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 
@@ -33,21 +30,21 @@ class MainActivity : AppCompatActivity() {
         this.btnResetColor = findViewById(R.id.btnResetColor)
         this.btnResetCount = findViewById(R.id.btnResetCount)
         setButtonListener()
-        setTvCounter(PreferenceManager().retrieveCount(), PreferenceManager().retrieveColor())
+        setTvCounter()
     }
 
     private fun setButtonListener() {
         this.btnRedBird.setOnClickListener{
-            addBird(R.color.red)
+            add(Colors.Red.colorId)
         }
         this.btnBlueBird.setOnClickListener{
-            addBird(R.color.blue)
+            add(Colors.Blue.colorId)
         }
         this.btnGreenBird.setOnClickListener{
-            addBird(R.color.green)
+            add(Colors.Green.colorId)
         }
         this.btnYellowBird.setOnClickListener{
-            addBird(R.color.yellow)
+            add(Colors.Yellow.colorId)
         }
         this.btnResetColor.setOnClickListener{
             resetColor()
@@ -57,23 +54,22 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun resetColor() {
-        val colorId: Int = R.color.gray
-        PreferenceManager().saveColor(colorId)
-        this.tvCounter.setBackgroundColor(ContextCompat.getColor(applicationContext, colorId))
+    private fun setTvCounter() {
+        this.tvCounter.text = PreferenceManager().retrieveCount().toString()
+        this.tvCounter.setBackgroundColor(ContextCompat.getColor(applicationContext, PreferenceManager().retrieveColor()))
     }
 
-    private fun setTvCounter(count: Int, colorId: Int) {
-        this.tvCounter.text = count.toString()
-        this.tvCounter.setBackgroundColor(ContextCompat.getColor(applicationContext, colorId))
-    }
-
-    private fun addBird(colorId: Int) {
+    private fun add(colorId: Int) {
         val count: Int = PreferenceManager().retrieveCount() + 1;
         this.tvCounter.text = count.toString()
         this.tvCounter.setBackgroundColor(ContextCompat.getColor(applicationContext, colorId))
         PreferenceManager().saveCount(count)
         PreferenceManager().saveColor(colorId)
+    }
+
+    private fun resetColor() {
+        PreferenceManager().saveColor(Colors.Default.colorId)
+        this.tvCounter.setBackgroundColor(ContextCompat.getColor(applicationContext, Colors.Default.colorId))
     }
 
     private fun resetCount(){

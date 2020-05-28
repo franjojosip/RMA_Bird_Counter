@@ -19,7 +19,7 @@ class PreferenceManager {
     }
 
     fun retrieveColor(): Int {
-        return this.sharedPreferences.getInt(PREFS_KEY_COLOR, R.color.gray)
+        return this.sharedPreferences.getInt(PREFS_KEY_COLOR, Colors.Default.colorId)
     }
 
     fun saveCount(count: Int) {
@@ -32,4 +32,3 @@ class PreferenceManager {
         return this.sharedPreferences.getInt(PREFS_KEY_COUNT, 0)
     }
 }
-

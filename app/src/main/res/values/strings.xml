@@ -1,11 +1,11 @@
 <resources>
-    <string name="app_name">Bird counter</string>
-    <string name="counter">COUNTER</string>
-    <string name="bird_counter">Bird Counter</string>
-    <string name="red">Red bird</string>
-    <string name="yellow">Yellow bird</string>
-    <string name="green">Green bird</string>
-    <string name="blue">Blue bird</string>
-    <string name="reset_color">Reset color</string>
-    <string name="reset_count">Reset count</string>
+<string name="app_name">Bird counter</string>
+<string name="counter">COUNTER</string>
+<string name="bird_counter">Bird Counter</string>
+<string name="red">Red bird</string>
+<string name="yellow">Yellow bird</string>
+<string name="green">Green bird</string>
+<string name="blue">Blue bird</string>
+<string name="reset_color">Reset color</string>
+<string name="reset_count">Reset count</string>
 </resources>
